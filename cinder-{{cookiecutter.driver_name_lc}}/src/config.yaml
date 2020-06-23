@@ -17,3 +17,22 @@ options:
       Key ID to import to the apt keyring to support use with arbitary source
       configuration from outside of Launchpad archives or PPA's.
 {%- endif %}
+  volume-backend-name:
+    default:
+    type: string
+    description: |
+      Volume backend name for the backend. The default value is the
+      application name in the Juju model, e.g.
+      "cinder-{{ cookiecutter.driver_name_lc }}-mybackend"
+      if it's deployed as
+      `juju deploy cinder-{{ cookiecutter.driver_name_lc }} cinder-{{ cookiecutter.driver_name_lc }}-mybackend`.
+      A common backend name can be set to multiple backends with the
+      same characters so that those can be treated as a single virtual
+      backend associated with a single volume type.
+  backend-availability-zone:
+    default:
+    type: string
+    description: |
+      Availability zone name of this volume backend. If set, it will
+      override the default availability zone. Supported for Pike or
+      newer releases.
